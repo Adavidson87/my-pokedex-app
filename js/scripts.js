@@ -1,3 +1,4 @@
+//Array of pokemon
 let pokemonList = [
   {name: 'Bulbuasaur',height: .7,type: ['grass', 'poison']},
   {name: 'Ivysaur',height: 1,type: ['grass', 'poison']},
@@ -29,4 +30,10 @@ let pokemonList = [
 //Prints list of pokemon
 for (let i=0; i < pokemonList.length; i++) {
   document.write("Name: " + pokemonList[i].name + ", " + "Height: " + pokemonList[i].height + "m");
+  //Adds comment if large pokemon
+  if (pokemonList[i].height > 1.5){
+    document.write(" - Wow that's big")
+  }
+  //Adds line breaks on each line
+  document.write("<br>");
 }
