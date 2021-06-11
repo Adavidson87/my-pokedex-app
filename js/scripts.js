@@ -28,12 +28,14 @@ let pokemonList = [
   {name: 'Raichu', height: .8, type: 'electric'}
 ]
 //Prints list of pokemon
-for (let i=0; i < pokemonList.length; i++) {
-  document.write("Name: " + pokemonList[i].name + ", " + "Height: " + pokemonList[i].height + "m");
+function listPokemon(pokemon) {
+  document.write("Name: " + pokemon.name + ", " + "Height: " + pokemon.height + "m");
   //Adds comment if large pokemon
-  if (pokemonList[i].height > 1.5){
+  if (pokemonList.height > 1.5){
     document.write(" - Wow that's big")
   }
   //Adds line breaks on each line
   document.write("<br>");
 }
+
+pokemonList.forEach(listPokemon)
