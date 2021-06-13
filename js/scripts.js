@@ -30,6 +30,7 @@ let pokemonRepository = (function () {
     {name: 'Raichu', height: .8, type: 'electric'}
   ];
 
+  //Adds pokemon to the list
   function add(pokemon){
     if (typeof(pokemon) === 'object'){
       pokemonList.push(pokemon);
@@ -38,26 +39,38 @@ let pokemonRepository = (function () {
     return document.write("Not correct information");
   }
 
+  //prints pokemon list
   function getAll() {
     return pokemonList;
   }
 
+  //applies button to each pokemon name
+  function addListItem(pokemon){
+    let pokemonList = document.querySelector(".pokemon-list");
+    let listpokemon = document.createElement('li');
+    let button = document.createElement('button');
+    button.innerText = pokemon.name;
+    button.classList.add("button-class");
+    button.addEventListener('click', function() {
+      showDetails(pokemon);
+    });
+    listpokemon.appendChild(button);
+    pokemonList.appendChild(listpokemon);
+  }
+
+  function showDetails(pokemon){
+    console.log(pokemon);
+  }
+
+  //list of usuable functions
   return {
     add: add,
-    getAll: getAll
+    getAll: getAll,
+    addListItem: addListItem,
+    showDetails: showDetails
   };
 })();
 
-
-//Prints list of pokemon
-function listPokemon(pokemon) {
-  document.write("Name: " + pokemon.name + ", " + "Height: " + pokemon.height + "m");
-  //Adds comment if large pokemon
-  if (pokemon.height > 1.5){
-    document.write(" - Wow that's big")
-  }
-  //Adds line breaks on each line
-  document.write("<br>");
-};
-
-pokemonRepository.getAll().forEach(listPokemon);
+pokemonRepository.getAll().forEach(function(pokemon) {
+  pokemonRepository.addListItem(pokemon);
+});
