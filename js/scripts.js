@@ -10,7 +10,7 @@ let pokemonRepository = (function () {
       typeof pokemon === "object" &&
       "name" in pokemon &&
       "detailsUrl" in pokemon
-      )
+    )
     pokemonList.push(pokemon);
     else {
       return document.write("Not correct information");
@@ -62,17 +62,18 @@ let pokemonRepository = (function () {
 
   function loadDetails(item) {
     let url = item.detailsUrl;
-    return fetch(url).then(function(response) {
-      return response.json();
-    }).then(function(details) {
-      //adds details to the add addListItem
-      item.imageUrl = details.sprites.front_default;
-      item.height = details.height;
-      item.types = details.types;
-    }).catch(function(e) {
-      console.error(e);
-    });
+      return fetch(url).then(function(response) {
+        return response.json();
+      }).then(function(details) {
+        //adds details to the add addListItem
+        item.imageUrl = details.sprites.front_default;
+        item.height = details.height;
+        item.types = details.types;
+      }).catch(function(e) {
+        console.error(e);
+      });
   }
+
 
   //list of usuable functions
   return {
