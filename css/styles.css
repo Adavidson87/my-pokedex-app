@@ -1,5 +1,6 @@
 .pokemon-list{
   display: inline-block;
+  text-align: center;
 }
 
 .button-class {
@@ -20,3 +21,27 @@
 ul {
   list-style: none;
   }
+
+h1 {
+  text-align: center;
+}
+
+#modal-container {
+  position: fixed;
+  padding: 10px;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+#modal-conatainer {
+  display: none;
+}
+
+#modal-container.is-visible {
+  /* Css for modal container - ad your own desire css tyles here */
+  display: block;
+}
