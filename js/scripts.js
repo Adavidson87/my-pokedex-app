@@ -39,7 +39,7 @@ let pokemonRepository = (function () {
   //shows details when button is pushed
   function showDetails(pokemon){
     loadDetails(pokemon).then(function () {
-      showModal(pokemon.name, pokemon.height, pokemon.imgUrl);
+      showModal(pokemon);
     });
   }
 
@@ -79,6 +79,8 @@ let pokemonRepository = (function () {
 
   function showModal(item) {
 
+    modalContainer.innerHTML = '';
+
     let modal = document.createElement('div');
     modal.classList.add('modal');
 
@@ -94,10 +96,10 @@ let pokemonRepository = (function () {
 
     // sets pokemon height
     let heightElement = document.createElement('p');
-    heightElement.innerText = item.height;
+    heightElement.innerText = ("Height: " + insertDecimal(item.height) + "m");
 
     let imgElement = document.createElement('img');
-    imgElement.src = item.imgUrl;
+    imgElement.src = item.imageUrl;
 
     modal.appendChild(closeButtonElement);
     modal.appendChild(nameElement);
@@ -114,19 +116,24 @@ let pokemonRepository = (function () {
     modalContainer.classList.remove('is-visible');
   }
 
-  // window.addEventListener('keydown', (e) => {
-  //   let modalContainer = document.querySelector('#modal-container');
-  //   if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
-  //     hideModal();
-  //   }
-  // });
+  window.addEventListener('keydown', (e) => {
+    let modalContainer = document.querySelector('#modal-container');
+    if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
+      hideModal();
+    }
+  });
 
-  // modalContainer.addEventListener('click', (e) => {
-  //   let target = e.target;
-  //   if (target === modalContainer) {
-  //     hideModal();
-  //   }
-  // });
+  modalContainer.addEventListener('click', (e) => {
+    let target = e.target;
+    if (target === modalContainer) {
+      hideModal();
+    }
+  });
+
+  //adds decimal to height to render it correctly
+  function insertDecimal(num){
+    return Number((num / 10).toFixed(2));
+  };
 
   //list of usuable functions
   return {
@@ -137,7 +144,8 @@ let pokemonRepository = (function () {
     loadList: loadList,
     loadDetails: loadDetails,
     showModal: showModal,
-    hideModal: hideModal
+    hideModal: hideModal,
+    insertDecimal: insertDecimal
   };
 
 })();
