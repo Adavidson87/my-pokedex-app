@@ -1,9 +1,9 @@
-.pokemon-list{
+/* .pokemon-list{
   display: inline-block;
   text-align: center;
   width: 100%;
   padding-left: 0;
-  }
+  } */
 
 .button-class {
   padding: 16px 32px;
@@ -28,6 +28,19 @@ h1 {
   text-align: center;
 }
 
+.list-group {
+  border: none;
+  width: 100%;
+  padding: 12px 28px;
+  font-family: inherit;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 4px 2px;
+}
+
 #modal-container {
   position: fixed;
   padding: 20px;
@@ -43,41 +56,43 @@ h1 {
   text-align: center;
 }
 
-.modal {
+.modal{
   margin: auto;
   display: inline-block;
   box-sizing: border-box;
   background: #fff;
   padding: 15px;
-  width: 100%;
+  width: 50%;
+  height: 50%;
   max-width: 700px;
   text-align: center;
   border-radius: 5%;
+  background-color: green;
 }
 
-.modal-close {
+/* .modal-close {
   float: right;
   -webkit-appearance: none;
   border: 0;
   background: none;
   color: #777;
   text-decoration: underline;
-}
+} */
 
-.modal h1 {
+/* .modal h1 {
   margin-top: 0;
-}
+} */
 
-.modal p {
+/* .modal p {
   margin-bottom: 0;
   text-align: center;
-}
+} */
 
-.modal img {
+/* .modal img {
   text-align: center;
   width: 50%;
-  margin-left: 28%;
-}
+  margin-left: 25%;
+} */
 
 #modal-container {
   display: none;
