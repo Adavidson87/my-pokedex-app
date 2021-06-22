@@ -36,6 +36,7 @@ let pokemonRepository = (function () {
 
     button.innerText = pokemon.name;
     button.classList.add("btn-info");
+    button.setAttribute('data-target', '#pokemon-name', 'data-toggle', 'modal');
     button.addEventListener('click', function() {
       showDetails(pokemon);
     });
@@ -91,48 +92,31 @@ let pokemonRepository = (function () {
   }
 
   // adds modal
-  let modalContainer = document.querySelector('#modal-container');
+  let modalContainer = $('#modal-container');
 
   function showModal(item) {
-    pokemonRepository.loadDetails(item).then(function() {
 
-      let modalHeader = document.querySelector('modal-header');
-      let modalTitle = $('modal-title');
-      let modalBody = $('modal-body');
+    let modalHeader = $('modal-header');
+    let modalTitle = $('modal-title');
+    let modalBody = $('modal-body');
 
 
     modalContainer.innerHTML = '';
 
-    // let modal = document.createElement('div');
-    // modal.classList.add('modal');
-
-    // adds close button to modal
-    // let closeButtonElement = document.createElement('buttton');
-    // closeButtonElement.classList.add('modal-close');
-    // closeButtonElement.innerText = 'Close';
-    // closeButtonElement.addEventListener('click', hideModal);
-
     // sets pokemon name
     let nameElement = $('<h1>' + item.name + '</h1>');
-    // nameElement.innerText = item.name;
 
     // sets pokemon height
     let heightElement = $('<p>' + 'Height: ' + insertDecimal(item.height) + 'm' + '</p>');
-    // heightElement.innerText = ("Height: " + insertDecimal(item.height) + "m");
 
     let imgElement = $('<img>' + item.imageUrl + '</img>');
-    // imgElement.src = item.imageUrl;
 
     let weightElement = $('<p>' + 'Weight: ' + insertDecimal(item.weight) + 'kg' + '</p>');
-    // weightElement.innerText = ("Weight: " + insertDecimal(item.weight) + "kg");
 
     let abilitiesElement = $('<p>' + 'Abilities: ' + '</p>');
-    // abilitiesElement.innerText = item.abilities;
 
     let typeElement = $('<p>' + 'Types: ' + '</p>');
-    // typeElement.innerText = item.types;
 
-    // modal.appendChild(closeButtonElement);
     modalTitle.append(nameElement);
     modalBody.append(heightElement);
     modalBody.append(weightElement);
@@ -140,31 +124,7 @@ let pokemonRepository = (function () {
     modalBody.append(abilitiesElement);
     modalBody.append(imgElement);
 
-    // modalContainer.appendChild(modal);
-
-    // modalContainer.addClass('is-visible')
-  });
   }
-
-  // hides modal
-  // function hideModal() {
-  //   let modalContainer = document.querySelector('#modal-container');
-  //   modalContainer.classList.remove('is-visible');
-  // }
-
-  // window.addEventListener('keydown', (e) => {
-  //   let modalContainer = document.querySelector('#modal-container');
-  //   if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
-  //     hideModal();
-  //   }
-  // });
-
-  // modalContainer.addEventListener('click', (e) => {
-  //   let target = e.target;
-  //   if (target === modalContainer) {
-  //     hideModal();
-  //   }
-  // });
 
   //adds decimal to height to render it correctly
   function insertDecimal(num){
@@ -179,8 +139,6 @@ let pokemonRepository = (function () {
     showDetails: showDetails,
     loadList: loadList,
     loadDetails: loadDetails,
-    // showModal: showModal,
-    // hideModal: hideModal,
     insertDecimal: insertDecimal
   };
 
