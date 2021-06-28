@@ -24,7 +24,7 @@ let pokemonRepository = (function() {
   //prints pokemon list
   function getAll() {
     return pokemonList;
-  } 
+  }
 
   //applies button to each pokemon name
   function addListItem(pokemon) {
@@ -132,15 +132,8 @@ let pokemonRepository = (function() {
   }
 
   //list of usuable functions
-  return {
-    add: add,
-    getAll: getAll,
-    addListItem: addListItem,
-    showDetails: showDetails,
-    loadList: loadList,
-    loadDetails: loadDetails,
-    insertDecimal: insertDecimal
-  };
+  return {getAll, addListItem, loadList};
+
 })();
 
 pokemonRepository.loadList().then(function() {
@@ -149,3 +142,17 @@ pokemonRepository.loadList().then(function() {
     pokemonRepository.addListItem(pokemon);
   });
 });
+
+document.getElementById('searchBar').addEventListener('input', e => {
+  let searchTerm = e.target.value;
+  let buttons = document.getElementsByClassName('btn-info');
+
+  for (let i = 0; i < buttons.length; i++) {
+    let text = buttons[i].innerText;
+    if (!text.toLowerCase().inlcudes(searchTerm.toLowerCase())) {
+      buttons[i].parentNode.style.display = 'none';
+    } else {
+      buttons[i].parentNode.style.display = 'block';
+    }
+  }
+})
