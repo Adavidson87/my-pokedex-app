@@ -53,13 +53,34 @@ let pokemonRepository = (function () {
     },
   ];
 
-  return {
-    add: function (pokemon) {
+  function add(pokemon) {
+    if (
+      typeof pokemon === "object" &&
+      "name" in pokemon &&
+      "height" in pokemon &&
+      "type" in pokemon
+    ) {
       pokemonList.push(pokemon);
-    },
-    getAll: function () {
-      return pokemonList;
-    },
+    } else {
+      console.log("pokemon is not correct");
+    }
+  }
+  function getAll() {
+    return pokemonList;
+  }
+  function addListItem(pokemon) {
+    let listOfPokemon = document.querySelector(".pokemon-list");
+    let listPokemon = document.createElement("li");
+    let button = document.createElement("button");
+    button.innerText = pokemon.name;
+    button.classList.add("button-class");
+    listPokemon.appendChild(button);
+    listOfPokemon.appendChild(listPokemon);
+  }
+  return {
+    add: add,
+    getAll: getAll,
+    addListItem: addListItem,
   };
 })();
 
@@ -67,16 +88,6 @@ console.log(pokemonRepository.getAll());
 // pokemonRepository.add({ name: 'Pikachu' });
 // console.log(pokemonRepository.getAll());
 
-function printArrayDetails() {
-  let listOfPokemon = pokemonRepository.getAll();
-  listOfPokemon.forEach(function (pokemon) {
-    // document.write(
-    //   "#" + pokemon.pokemonNumber + "." + " " + pokemon.name + "," + " "
-    // );
-    Object.keys(pokemon).forEach(function (property) {
-      document.write(pokemon[property]);
-    });
-  });
-}
-
-printArrayDetails();
+pokemonRepository.getAll().forEach(function (pokemon) {
+  pokemonRepository.addListItem(pokemon);
+});
