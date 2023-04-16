@@ -52,7 +52,6 @@ let pokemonRepository = (function () {
       spDef: 100,
     },
   ];
-
   function add(pokemon) {
     if (
       typeof pokemon === "object" &&
@@ -68,19 +67,26 @@ let pokemonRepository = (function () {
   function getAll() {
     return pokemonList;
   }
+  function showDetails(pokemon) {
+    console.log(pokemon);
+  }
   function addListItem(pokemon) {
-    let listOfPokemon = document.querySelector(".pokemon-list");
-    let listPokemon = document.createElement("li");
+    let pokemonListGroup = document.querySelector(".pokemon-list");
+    let pokemonListElement = document.createElement("li");
     let button = document.createElement("button");
     button.innerText = pokemon.name;
     button.classList.add("button-class");
-    listPokemon.appendChild(button);
-    listOfPokemon.appendChild(listPokemon);
+    button.addEventListener("click", function (event) {
+      showDetails(pokemon);
+    });
+    pokemonListElement.appendChild(button);
+    pokemonListGroup.appendChild(pokemonListElement);
   }
   return {
     add: add,
     getAll: getAll,
     addListItem: addListItem,
+    showDetails: showDetails,
   };
 })();
 
