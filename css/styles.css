@@ -1,3 +1,8 @@
+.logo-image {
+          max-width: 230px;
+          max-height: 80px;
+}
+
 .button-class {
           background-color: #4caf50;
           border: none;
@@ -16,7 +21,7 @@
           border: 2px solid #4caf50;
 }
 
-#modal-container {
+/* #modal-container {
           display: none;
 }
 
@@ -61,4 +66,4 @@
 
 .modal p {
           margin-bottom: 0;
-}
+} */
