@@ -14,34 +14,29 @@
 <body>
   <header>
     <nav class="navbar navbar-light bg-light navbar-expand-sm">
+
       <a class="navbar-brand" href="#"><img class="logo-image d-inline-block alight-top" src="imgs/pokemon-logo.png"
           alt="pokemon logo"></a>
+
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle Navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <!-- <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Features</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Pricing</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-          </li> -->
-        </ul>
-      </div>
+
+      <form class="form-inline" aria-controls="pokemon-list">
+        <input id="search-input" class="pokemon-search form control mr-sm-2" type="search" placeholder="Search"
+          aria-label="Search" aria-describedby="search-instructions">
+      </form>
+
+      <div class="collapse navbar-collapse" id="navbarNav"></div>
+
     </nav>
   </header>
 
-  <main>
-    <ul class="pokemon-list list-group"></ul>
-
+  <main class="container-fluid">
+    <div class="row">
+      <ul class="pokemon-list list-group col-12"></ul>
+    </div>
     <div class="modal fade" id="modal-container" tabindex="-1" role="dialog" aria-labelledby="modal-container-label"
       aria-hidden="true">
       <div class="modal-dialog" role="document">
