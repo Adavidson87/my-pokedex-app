@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-  <link href="css/styles.css" rel="stylesheet" type="text/css" />
+  <link href="src/css/styles.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -42,19 +42,54 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h2 class="modal-title" id="modal-container">
+            <h2 class="modal-title col-1">
               <div class="pokemon-id"></div>
+            </h2>
+            <h2 class="modal-title col-10">
               <div class="pokemon-name"></div>
             </h2>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <button type="button" class="close col-1" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-            <img class="pokemon-image"></img>
-            <div class="pokemon-types"></div>
-            <div class="pokemon-height"></div>
-            <div class="pokemon-weight"></div>
+            <div class="row">
+              <img class="pokemon-image"></img>
+            </div>
+            <div class="row">
+              <div class="types-container">
+                <h3 class="types-header">Types</h3>
+                <div class="pokemon-types"></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="physical-container">
+                <h3 class="physical-header">Height & Weight</h3>
+                <div class="pokemon-height"></div>
+                <div class="pokemon-weight"></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="stats-container">
+                <h3 class="stats-header">Stats</h3>
+                <div class="pokemon-stats-container">
+                  <div class="pokemon-stats-name"></div>
+                  <div class="pokemon-stats"></div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="abilities-container">
+                <h3 class="abilities-header">Abilities</h3>
+                <div class="pokemon-abilities"></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="moves-container">
+                <h3 class="moves-header">Moves</h3>
+                <div class="pokemon-moves"></div>
+              </div>
+            </div>
           </div>
           <div class="modal-footer"></div>
         </div>
@@ -72,9 +107,9 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
-  <script src="js/promis-polyfill.js"></script>
-  <script src="js/fetch.umd.js"></script>
-  <script src="js/scripts.js"></script>
+  <script src="src/js/promis-polyfill.js"></script>
+  <script src="src/js/fetch.umd.js"></script>
+  <script src="src/js/scripts.js"></script>
 </body>
 
 

@@ -34,6 +34,9 @@ let pokemonRepository = (function () {
         item.types = details.types;
         item.id = details.id;
         item.weight = details.weight;
+        item.abilities = details.abilities;
+        item.moves = details.moves;
+        item.stats = details.stats;
       })
       .catch(function (e) {
         console.error(e);
@@ -113,36 +116,37 @@ let pokemonRepository = (function () {
     });
     let pokemonTypes = document.querySelector(".pokemon-types");
     pokemonTypes.innerHTML = itemTypes;
+
+    let itemAbilities = "";
+    pokemon.abilities.forEach(function (abilities) {
+      itemAbilities += ["<li>" + abilities.ability.name + "</li>"];
+    });
+    let pokemonAbilities = document.querySelector(".pokemon-abilities");
+    pokemonAbilities.innerHTML = itemAbilities;
+
+    let itemMoves = "";
+    pokemon.moves.forEach(function (moves) {
+      itemMoves += ["<li>" + moves.move.name + "</li>"];
+    });
+    let pokemonMoves = document.querySelector(".pokemon-moves");
+    pokemonMoves.innerHTML = itemMoves;
+
+    let itemStatsName = "";
+    pokemon.stats.forEach(function (stats) {
+      itemStatsName += ["<li>" + stats.stat.name + "</li>"];
+    });
+    let pokemonStatsName = document.querySelector(".pokemon-stats-name");
+    pokemonStatsName.innerHTML = itemStatsName;
+
+    let itemStats = "";
+    pokemon.stats.forEach(function (stats) {
+      itemStats += ["<li>" + stats.base_stat + "</li>"];
+    });
+    let pokemonStats = document.querySelector(".pokemon-stats");
+    pokemonStats.innerHTML = itemStats;
   }
 
-  // function searchPokemon() {
-  //   let searchInput = document.getElementById("search-input");
-  //   let searchText = searchInput.value.toLowerCase();
-  //   let allPokemon = document.querySelectorAll(".list-group-item");
-
-  //   allPokemon.forEach(function (pokemon) {
-  //     let pokemonText = pokemon
-  //       .querySelector(".button-class")
-  //       .innerText.toLowerCase();
-  //     let searchList = document.querySelector(".pokemon-list");
-
-  //     if (pokemonText.includes(searchText)) {
-  //       searchList.classList.add("search-list");
-  //       pokemon.style.display = "inline-block";
-  //     } else {
-  //       pokemon.style.display = "none";
-  //     }
-  //     if (!searchInput.value) {
-  //       searchList.classList.remove("search-list");
-  //     }
-  //   });
-  // }
-
-  // let searchInput = document.getElementById("search-input");
-  // searchInput.addEventListener("input", function () {
-  //   searchPokemon();
-  // });
-
+  //searchbar functionality, filters pokemon as you type
   document.getElementById("search-input").addEventListener("input", (e) => {
     let searchInput = e.target.value;
     let buttons = document.getElementsByClassName("button-class");
@@ -165,7 +169,6 @@ let pokemonRepository = (function () {
     addListItem: addListItem,
     loadList: loadList,
     showModal: showModal,
-    // searchPokemon: searchPokemon,
   };
 })();
 
