@@ -27,54 +27,60 @@ body {
   color: transparent;
 }
 
-.pokemon-list {
-  padding: 3rem 5rem;
-  max-width: 700px;
+.container-fluid {
+  background-color: rgb(255, 106, 106);
+  max-width: 1025px;
+}
+.container-fluid .pokemon-list {
+  width: 100%;
   list-style-type: none;
   display: flex;
   flex-wrap: wrap;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 50px;
+  grid-template-columns: repeat(auto-fit, minmax(205px, 1fr));
+  row-gap: 20px;
   align-items: center;
-  margin: auto;
-  text-align: center;
-  justify-content: center;
-  background-color: rgb(255, 106, 106);
 }
-.pokemon-list .list-group-item {
+.container-fluid .pokemon-list .list-group-item {
   display: inline-block;
   padding: 0;
+  margin: auto;
   border: none;
-  background-color: #fa8072;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 175px;
+  height: 100%;
+  border-radius: 10px;
 }
-.pokemon-list .button-class {
-  background-color: #4caf50;
+.container-fluid .pokemon-list .button-class {
   border: none;
   color: white;
-  padding: 16px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin: 4px 2px;
+  margin: auto;
   transition-duration: 0.4s;
   cursor: pointer;
-  background-color: white;
-  color: black;
-  border: 2px solid #4caf50;
+  color: white;
 }
-.pokemon-list .button-class:hover {
+.container-fluid .pokemon-list .button-class:hover {
   background-color: #5c5c5c;
   color: #fcec2c;
+}
+.container-fluid .pokemon-list .button-class .button-image {
+  width: 150px;
+  height: 150px;
+}
+.container-fluid .pokemon-list .button-class .button-name {
+  margin: 0;
+  color: black;
 }
 
 .modal .modal-dialog .modal-content .modal-header {
   background-color: #5c5c5c;
   color: #e3e3e3;
-}
-.modal .modal-dialog .modal-content .modal-header .modal-title {
-  text-align: center;
 }
 .modal .modal-dialog .modal-content .modal-header .close {
   background-color: red;
@@ -102,6 +108,9 @@ body {
   margin-bottom: 20px;
   border: 5px solid black;
   border-radius: 10px;
+}
+.modal .modal-dialog .modal-content .modal-body .modal-title {
+  text-align: center;
 }
 .modal .modal-dialog .modal-content .modal-body .types-container {
   width: 100%;
@@ -178,4 +187,76 @@ body {
   grid-template-rows: auto;
   justify-content: center;
   list-style: none;
+}
+
+.color-bug {
+  background-color: rgb(209, 224, 77);
+}
+
+.color-dark {
+  background-color: rgb(112, 88, 72);
+}
+
+.color-dragon {
+  background-color: rgb(112, 56, 248);
+}
+
+.color-electic {
+  background-color: rgb(248, 208, 48);
+}
+
+.color-fairy {
+  background-color: rgb(238, 153, 172);
+}
+
+.color-fighting {
+  background-color: rgb(192, 48, 40);
+}
+
+.color-fire {
+  background-color: rgb(240, 128, 48);
+}
+
+.color-flying {
+  background-color: rgb(168, 144, 240);
+}
+
+.color-ghost {
+  background-color: rgb(112, 88, 152);
+}
+
+.color-grass {
+  background-color: rgb(120, 200, 80);
+}
+
+.color-ground {
+  background-color: rgb(224, 192, 104);
+}
+
+.color-ice {
+  background-color: rgb(152, 216, 216);
+}
+
+.color-normal {
+  background-color: rgb(168, 168, 120);
+}
+
+.color-poison {
+  background-color: rgb(160, 64, 160);
+}
+
+.color-psychic {
+  background-color: rgb(248, 88, 136);
+}
+
+.color-rock {
+  background-color: rgb(184, 160, 56);
+}
+
+.color-steel {
+  background-color: rgb(184, 184, 208);
+}
+
+.color-water {
+  background-color: rgb(104, 144, 240);
 }/*# sourceMappingURL=styles.css.map */

@@ -35,19 +35,13 @@
 
   <main class="container-fluid">
     <div class="row">
-      <ul class="pokemon-list list-group col-12"></ul>
+      <ul class="pokemon-list list-group"></ul>
     </div>
     <div class="modal fade" id="modal-container" tabindex="-1" role="dialog" aria-labelledby="modal-container-label"
       aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h2 class="modal-title col-1">
-              <div class="pokemon-id"></div>
-            </h2>
-            <h2 class="modal-title col-10">
-              <div class="pokemon-name"></div>
-            </h2>
             <button type="button" class="close col-1" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -55,6 +49,14 @@
           <div class="modal-body">
             <div class="row">
               <img class="pokemon-image"></img>
+            </div>
+            <div class="row">
+              <h2 class="modal-title col-2">
+                <div class="pokemon-id"></div>
+              </h2>
+              <h2 class="modal-title col-10">
+                <div class="pokemon-name"></div>
+              </h2>
             </div>
             <div class="row">
               <div class="types-container">
