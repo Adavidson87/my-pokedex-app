@@ -1,6 +1,6 @@
 let pokemonRepository = (function () {
   let pokemonList = [];
-  let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=25";
+  let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=20";
 
   //Gets pokemon from the pokemon list array
   function getAll() {
@@ -28,7 +28,8 @@ let pokemonRepository = (function () {
         return response.json();
       })
       .then(function (details) {
-        // item.imageUrl = details.sprites.front_default;
+        item.frontDefaultSprite = details.sprites.front_default;
+        item.backDefaultSprite = details.sprites.back_default;
         item.imageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" + details.id + ".png";
         item.height = details.height;
         item.types = details.types;
@@ -58,6 +59,8 @@ let pokemonRepository = (function () {
      let pokemonListElement = document.createElement("li");
     pokemonListElement.classList.add("list-group-item");
 
+    
+
     let buttonImage = document.createElement("img");
     buttonImage.classList.add("button-image");
     buttonImage.setAttribute("src", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" + pokemon.id + ".png");
@@ -76,7 +79,6 @@ let pokemonRepository = (function () {
     
 
     button.addEventListener("click", function (event) {
-      backgroundColor(pokemon);
       showDetails(pokemon);
     });
 
@@ -115,8 +117,11 @@ let pokemonRepository = (function () {
     let pokemonName = document.querySelector(".pokemon-name");
     pokemonName.innerText = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
 
-    let pokemonImage = document.querySelector(".pokemon-image");
-    pokemonImage.src = pokemon.officialArtwork;
+    let pokemonImageFront = document.querySelector(".pokemon-image-front");
+    pokemonImageFront.src = pokemon.frontDefaultSprite;
+
+    let pokemonImageBack = document.querySelector(".pokemon-image-back");
+    pokemonImageBack.src = pokemon.backDefaultSprite;
 
     let pokemonHeight = document.querySelector(".pokemon-height");
     pokemonHeight.innerText = "Height: " + pokemon.height / 10 + " m";
@@ -155,10 +160,20 @@ let pokemonRepository = (function () {
 
     let itemStats = "";
     pokemon.stats.forEach(function (stats) {
-      itemStats += ["<li>" + stats.base_stat + "</li>"];
+      itemStats += ["<li class='meter'>" + "<span class='stats-progress-bar' style='width: " + stats.base_stat  + "%'>" + stats.base_stat + "</span>" + "</li>"];
     });
     let pokemonStats = document.querySelector(".pokemon-stats");
     pokemonStats.innerHTML = itemStats;
+
+    let progressBarMeter = document.createElement("div");
+    progressBarMeter.classList.add("meter");
+
+    let progressBarSpan = document.createElement("span");
+    progressBarSpan.classList.add("stats-progress-bar");
+    progressBarSpan.setAttribute("style", "width: " + pokemon.stats);
+
+    // pokemonStats.appendChild(progressBarMeter);
+    itemStats.appendChild(progressBarSpan)
   }
 
   //searchbar functionality, filters pokemon as you type

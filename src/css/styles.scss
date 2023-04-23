@@ -105,15 +105,15 @@ body {
       .modal-body {
         background-color: #e3e3e3;
         text-align: center;
-        .pokemon-image {
-        align-items: center;
-        margin: auto;
-        text-align: center;
-        justify-content: center;
-        width: 50%;
-        margin-bottom: 20px;
-        border: 5px solid black; 
-        border-radius: 10px;
+        .pokemon-image-container {
+          border: 5px solid black; 
+            border-radius: 10px;
+          .pokemon-image-front {
+            width: 50%;
+          }
+          .pokemon-image-back {
+            width: 50%;
+          }
         }
         .modal-title {
           text-align: center;
@@ -147,22 +147,42 @@ body {
           .stats-header {
             text-decoration: underline;
           }
-          .pokemon-stats-container {
-            display: flex;
-            justify-content: center;
           .pokemon-stats-name {
             list-style: none;
             text-align: left;
             margin-left: 20px;
-            margin-right: 20px;
+            margin-right: 0;
+            padding-right: 0;
           }
           .pokemon-stats {
             list-style: none;
-            text-align: right;
-            margin-left: 20px;
-            margin-right: 20px;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+            .meter {
+              height: 20px;
+              position: relative;
+              background: #555;
+              border-radius: 25px;
+              // padding: 10px;
+              box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3);
+              text-align: center;
+              &> span {
+                text-align: center;
+                display: block;
+                height: 100%;
+                border-top-right-radius: 8px;
+                border-bottom-right-radius: 8px;
+                border-top-left-radius: 20px;
+                border-bottom-left-radius: 20px;
+                background-color: rgb(42, 194, 83);
+                background-image: linear-gradient(center bottom, rgb(43, 194, 83) 37%, rgb(84, 240, 84) 69%);
+                box-shadow: inset 0 2px 9px rgba(255, 255, 255, 0.3), inset 0 -2px 6px rgba(0, 0, 0, 0.4);
+                position: relative;
+                overflow: hidden;
+              }
+            }
           }
-        }
         }
         .abilities-container {
           width: 100%;
