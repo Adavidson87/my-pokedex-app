@@ -1,3 +1,5 @@
+/** @format */
+
 let pokemonRepository = (function () {
   let pokemonList = [];
   let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=20";
@@ -30,7 +32,10 @@ let pokemonRepository = (function () {
       .then(function (details) {
         item.frontDefaultSprite = details.sprites.front_default;
         item.backDefaultSprite = details.sprites.back_default;
-        item.imageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" + details.id + ".png";
+        item.imageUrl =
+          "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" +
+          details.id +
+          ".png";
         item.height = details.height;
         item.types = details.types;
         item.id = details.id;
@@ -54,39 +59,43 @@ let pokemonRepository = (function () {
   //turns pokemon into viewable list items that can be clicked on to open modal with details
   function addListItem(pokemon) {
     loadDetails(pokemon).then(function () {
-    let pokemonListGroup = document.querySelector(".pokemon-list");
+      let pokemonListGroup = document.querySelector(".pokemon-list");
 
-     let pokemonListElement = document.createElement("li");
-    pokemonListElement.classList.add("list-group-item");
+      let pokemonListElement = document.createElement("li");
+      pokemonListElement.classList.add("list-group-item");
+      pokemonListElement.setAttribute("id", "li");
 
-    
+      let buttonImage = document.createElement("img");
+      buttonImage.classList.add("button-image");
+      buttonImage.setAttribute(
+        "src",
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" +
+          pokemon.id +
+          ".png"
+      );
 
-    let buttonImage = document.createElement("img");
-    buttonImage.classList.add("button-image");
-    buttonImage.setAttribute("src", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" + pokemon.id + ".png");
+      let buttonName = document.createElement("h5");
+      buttonName.classList.add("button-name");
+      buttonName.innerText =
+        "#" + pokemon.id + " " + pokemon.name.toUpperCase();
 
-    let buttonName = document.createElement("h5");
-    buttonName.classList.add("button-name")
-    buttonName.innerText = "#" + pokemon.id + " " + pokemon.name.toUpperCase();
+      let button = document.createElement("btn");
+      button.classList.add("button-class");
+      button.setAttribute("id", "show-modal");
+      button.setAttribute("type", "button");
+      button.setAttribute("data-toggle", "modal");
+      button.setAttribute("data-target", "#modal-container");
+      button.addEventListener("click", function (event) {
+        showDetails(pokemon);
+      });
 
-    let button = document.createElement("btn");
-    button.classList.add("button-class");
-    button.setAttribute("id", "show-modal");
-    button.setAttribute("type", "button");
-    button.setAttribute("data-toggle", "modal");
-    button.setAttribute("data-target", "#modal-container");
+      pokemonList.sort();
 
-    
-
-    button.addEventListener("click", function (event) {
-      showDetails(pokemon);
+      pokemonListElement.appendChild(button);
+      pokemonListGroup.appendChild(pokemonListElement);
+      button.appendChild(buttonImage);
+      button.appendChild(buttonName);
     });
-
-    pokemonListElement.appendChild(button);
-    pokemonListGroup.appendChild(pokemonListElement);
-    button.appendChild(buttonImage);
-    button.appendChild(buttonName);
-  })
   }
 
   //retrieves pokemon data from api and adds to pokemon list array
@@ -115,7 +124,8 @@ let pokemonRepository = (function () {
     pokemonId.innerText = "#" + pokemon.id;
 
     let pokemonName = document.querySelector(".pokemon-name");
-    pokemonName.innerText = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
+    pokemonName.innerText =
+      pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
 
     let pokemonImageFront = document.querySelector(".pokemon-image-front");
     pokemonImageFront.src = pokemon.frontDefaultSprite;
@@ -124,29 +134,51 @@ let pokemonRepository = (function () {
     pokemonImageBack.src = pokemon.backDefaultSprite;
 
     let pokemonHeight = document.querySelector(".pokemon-height");
-    pokemonHeight.innerText = "Height: " + pokemon.height / 10 + " m";
+    pokemonHeight.innerText = pokemon.height / 10 + " m";
 
     let pokemonWeight = document.querySelector(".pokemon-weight");
-    pokemonWeight.innerText = "Weight: " + pokemon.weight / 10 + "kgs";
+    pokemonWeight.innerText = pokemon.weight / 10 + "kgs";
 
     let itemTypes = "";
     pokemon.types.forEach(function (types) {
-      itemTypes += ["<li class='types-list-item' id='types-list-item'>" + types.type.name.charAt(0).toUpperCase() + types.type.name.slice(1) + "</li>"];
+      itemTypes += [
+        "<li class='types-list-item' id='types-list-item'>" +
+          types.type.name.charAt(0).toUpperCase() +
+          types.type.name.slice(1) +
+          "</li>",
+      ];
     });
+
+    
 
     let pokemonTypes = document.querySelector(".pokemon-types");
     pokemonTypes.innerHTML = itemTypes;
 
+    let typesBackground = document.getElementById("types-list-item");
+    if (typesBackground.innerHTML == "grass") {
+      typesBackground.setAttribute("style:", "background-color: rgb(120, 200, 80)")
+    }
+
     let itemAbilities = "";
     pokemon.abilities.forEach(function (abilities) {
-      itemAbilities += ["<li>" + abilities.ability.name.charAt(0).toUpperCase() + abilities.ability.name.slice(1) + "</li>"];
+      itemAbilities += [
+        "<li>" +
+          abilities.ability.name.charAt(0).toUpperCase() +
+          abilities.ability.name.slice(1) +
+          "</li>",
+      ];
     });
     let pokemonAbilities = document.querySelector(".pokemon-abilities");
     pokemonAbilities.innerHTML = itemAbilities;
 
     let itemMoves = "";
     pokemon.moves.forEach(function (moves) {
-      itemMoves += ["<li>" + moves.move.name.charAt(0).toUpperCase() + moves.move.name.slice(1) + "</li>"];
+      itemMoves += [
+        "<li>" +
+          moves.move.name.charAt(0).toUpperCase() +
+          moves.move.name.slice(1) +
+          "</li>",
+      ];
     });
     let pokemonMoves = document.querySelector(".pokemon-moves");
     pokemonMoves.innerHTML = itemMoves;
@@ -156,7 +188,7 @@ let pokemonRepository = (function () {
       itemStatsName += ["<li>" + stats.stat.name.charAt(0).toUpperCase() + stats.stat.name.slice(1) + "</li>"];
     });
     let pokemonStatsName = document.querySelector(".pokemon-stats-name");
-    pokemonStatsName.innerHTML = itemStatsName;
+    // pokemonStatsName.innerHTML = itemStatsName;
 
     let itemStats = "";
     pokemon.stats.forEach(function (stats) {
@@ -172,7 +204,8 @@ let pokemonRepository = (function () {
     progressBarSpan.classList.add("stats-progress-bar");
     progressBarSpan.setAttribute("style", "width: " + pokemon.stats);
 
-    // pokemonStats.appendChild(progressBarMeter);
+    
+    pokemonStats.appendChild(progressBarMeter);
     itemStats.appendChild(progressBarSpan)
   }
 
@@ -208,6 +241,89 @@ pokemonRepository.loadList().then(function () {
   });
 });
 
+// let createPage = function () {
+//   let numberOfPokemonDisplayed = pokemonRepository.getAll();
+//   console.log(numberOfPokemonDisplayed);
+// };
+
+// createPage();
+
+// let listPagination = function () {
+//   const paginationNumbers = document.getElementById("pagination-number");
+//   const paginatedList = document.getElementById("paginated-list");
+//   const listItems = paginatedList.querySelectorAll("li");
+//   const nextButton = document.getElementById("next-button");
+//   const prevButton = document.getElementById("previous-button");
+
+//   const paginationLimit = 20;
+//   const pageCount = Math.ceil(listItems.length / paginationLimit);
+//   let currentPage = 1;
+
+//   const appendPageNumber = (index) => {
+//     const pageNumber = document.createElement("button");
+//     pageNumber.className = "pagination-number";
+//     pageNumber.innerHTML = index;
+//     pageNumber.setAttribute("page-index", index);
+//     pageNumber.setAttribute("aria-label", "Page" + index);
+//     paginationNumbers.appendChild(pageNumber);
+//   };
+
+//   const getPaginationNumbers = () => {
+//     for (let i = 1; 1 <= pageCount; i++) {
+//       appendPageNumber(i);
+//     }
+//   };
+
+//   const setCurrentPage = (pageNum) => {
+//     currentPage = pageNum;
+//     const prevRange = (pageNum - 1) * paginationLimit;
+//     const currRange = pageNum * paginationLimit;
+//     handleActivePageNumber();
+//     listItems.forEach((item, index) => {
+//       item.classList.add("hidden");
+//       if (index >= prevRange && index < currRange) {
+//         item.classList.remove("hidden");
+//       }
+//     });
+//   };
+
+//   const handleActivePageNumber = () => {
+//     document.querySelectorAll(".pagination-number").forEach((button) => {
+//       button.classList.remove("active");
+//       const pageIndex = Number(button.getAttribute("page-index"));
+//       if (pageIndex == currentPage) {
+//         button.classList.add("active");
+//       }
+//     });
+//   };
+
+//   window.addEventListener("load", () => {
+//     getPaginationNumbers();
+//     setCurrentPage(1);
+
+//     document.querySelectorAll(".pagination-number").forEach((button) => {
+//       const pageIndex = Number(button.getAttribute("page-index"));
+//       if (pageIndex) {
+//         button.addEventListener("click", () => {
+//           setCurrentPage(pageIndex);
+//         });
+//       }
+//     });
+//   });
+// };
+
+// function pageLoadTime() {
+//   let occuredTime = 100000;
+//   for (let i = 1; i <= 100000; i++) {
+//   if (i !== occuredTime) {
+//     document.querySelector("body").style.visibility = "visible";
+//       document.querySelector("#loader").style.visibility = "none";
+//   } else {
+//     document.querySelector("#loader").style.display = "visible";
+//     document.querySelector("body").style.visibility = "none";
+//   }
+// }}
+// pageLoadTime();
 
 // let backgroundColor = pokemon.types.type;
 //     if (pokemon.types.type === "bug") {

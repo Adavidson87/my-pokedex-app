@@ -7,11 +7,14 @@
   <title>Pokedex App</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
   <link href="src/css/styles.css" rel="stylesheet" type="text/css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
+  <div class="center" id="loader"></div>
   <header>
     <nav class="navbar navbar-light bg-light navbar-expand-sm">
 
@@ -23,7 +26,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <form class="form-inline" aria-controls="pokemon-list">
+      <form class="form-inline col-11" aria-controls="pokemon-list">
         <input id="search-input" class="pokemon-search form control mr-sm-2" type="search" placeholder="Search"
           aria-label="Search" aria-describedby="search-instructions">
       </form>
@@ -34,55 +37,96 @@
   </header>
 
   <main class="container-fluid">
+
+    <img class="loading-img" src="imgs/Clear.gif">
+
     <div class="row">
-      <ul class="pokemon-list list-group"></ul>
+      <ul class="pokemon-list list-group" id="paginated-list"></ul>
     </div>
+
+    <nav aria-label="Page navigation">
+      <ul class="pagination justify-content-center">
+        <li class="page-item disabled">
+          <a class="page-link" id="previous-button" href="#" tabindex="-1" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
+          </a>
+        </li>
+        <div id="pagination-numbers">
+          <li class="page-item">
+            <a class="page-link" id="next-button" href="#" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+              <span class="sr-only">Next</span>
+            </a>
+          </li>
+      </ul>
+    </nav>
+
     <div class="modal fade" id="modal-container" tabindex="-1" role="dialog" aria-labelledby="modal-container-label"
       aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
+
           <div class="modal-header">
             <button type="button" class="close col-1" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
+            <h2 class="modal-title col-2">
+              <div class="pokemon-id"></div>
+            </h2>
           </div>
+
           <div class="modal-body">
+
             <div class="row pokemon-image-container">
               <img class="pokemon-image-front">
               <img class="pokemon-image-back">
             </div>
+
             <div class="row pokemon-title-container">
-              <h2 class="modal-title col-2">
-                <div class="pokemon-id"></div>
-              </h2>
-              <h2 class="modal-title col-10">
+              <h2 class="modal-title">
                 <div class="pokemon-name"></div>
               </h2>
             </div>
+
             <div class="row pokemon-types-container">
               <div class="types-container">
-                <h3 class="types-header">Types</h3>
                 <div class="pokemon-types"></div>
               </div>
             </div>
+
             <div class="row physical-container">
-              <h3 class="physical-header col-12">Height & Weight</h3>
-              <div class="pokemon-height col"></div>
-              <div class="pokemon-weight col"></div>
+              <div class="pokemon-h-w col">
+                <p>Height</p>
+                <div class="pokemon-height col"></div>
+              </div>
+              <div class="pokemon-h-w col">
+                <p>Weight</p>
+                <div class="pokemon-weight col"></div>
+              </div>
             </div>
-            <div class="row stats-container">
+
+            <div class="row stats-container col">
               <h3 class="stats-header col-12">Stats</h3>
-              <div class="pokemon-stats-name col"></div>
-              <div class="pokemon-stats col">
-                
+              <div class="pokemon-stats-name col-3">
+                <li>Hp</li>
+                <li>Att</li>
+                <li>Def</li>
+                <li>Sp-Att</li>
+                <li>Sp-def</li>
+                <li>Spe</li>
               </div>
+              <div class="pokemon-stats col-9"></div>
             </div>
-            <div class="row">
-              <div class="abilities-container">
-                <h3 class="abilities-header">Abilities</h3>
-                <div class="pokemon-abilities"></div>
-              </div>
+
+
+
+            <div class="row abilities-container col-12">
+              <h3 class="row abilities-header">Abilities</h3>
+              <div class="row pokemon-abilities col-12"></div>
             </div>
+
+
             <div class="row">
               <div class="moves-container">
                 <h3 class="moves-header">Moves</h3>
@@ -90,9 +134,13 @@
               </div>
             </div>
           </div>
-          <div class="modal-footer"></div>
+
         </div>
+
+        <div class="modal-footer"></div>
+
       </div>
+    </div>
     </div>>
 
   </main>

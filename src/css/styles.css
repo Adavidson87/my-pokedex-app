@@ -1,5 +1,22 @@
-body {
-  background-color: #e3e3e3;
+/** @format */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-shadow: 0 2px 2px var(--black, 0.3);
+}
+
+:root {
+  --primary-color: rgb(160, 20, 20);
+  --secondary-color: rgb(255, 255, 0);
+  --tertiary-color: rgb(40, 40, 40);
+  --quarternary: rgb(255, 0, 255);
+  --quinary: rgb(0, 255, 255);
+  --senary: rgb(0, 0, 255);
+  --septenary: rgb(0, 255, 0);
+  --black: rgb(0, 0, 0);
+  --white: rgb(223, 223, 223);
 }
 
 .logo-image {
@@ -7,28 +24,31 @@ body {
   max-height: 80px;
 }
 
-.pokemon-search {
+.form-inline {
+  margin: auto;
+  margin-right: 0;
+}
+.form-inline .pokemon-search {
   border-radius: 0;
   border: 3px solid black;
-  background-color: #5c5c5c;
   color: #dddddd;
+  margin: auto;
+  margin-right: 0;
 }
-.pokemon-search:placholder {
+.form-inline .pokemon-search:placholder {
   color: #fcec2c;
   opacity: 1;
   font-style: italic;
 }
-.pokemon-search:focus {
-  background-color: #ababab;
+.form-inline .pokemon-search:focus {
   border: 3px solid black;
   color: #fcec2c;
 }
-.pokemon-search:focus::placholder {
+.form-inline .pokemon-search:focus::placholder {
   color: transparent;
 }
 
 .container-fluid {
-  background-color: rgb(255, 106, 106);
   max-width: 1025px;
 }
 .container-fluid .pokemon-list {
@@ -40,6 +60,7 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(205px, 1fr));
   row-gap: 20px;
   align-items: center;
+  margin-top: 20px;
 }
 .container-fluid .pokemon-list .list-group-item {
   display: inline-block;
@@ -54,20 +75,20 @@ body {
   border-radius: 10px;
 }
 .container-fluid .pokemon-list .button-class {
+  background-color: #4caf50;
   border: none;
-  color: white;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 5px;
   margin: auto;
   transition-duration: 0.4s;
   cursor: pointer;
-  color: white;
+  width: 100%;
+  border-radius: 10px;
 }
 .container-fluid .pokemon-list .button-class:hover {
-  background-color: #5c5c5c;
-  color: #fcec2c;
+  color: white;
 }
 .container-fluid .pokemon-list .button-class .button-image {
   width: 150px;
@@ -75,15 +96,25 @@ body {
 }
 .container-fluid .pokemon-list .button-class .button-name {
   margin: 0;
-  color: black;
+  margin-bottom: 2px;
+}
+.container-fluid .pokemon-list .button-class .button-name:hover {
+  color: white;
 }
 
+.modal {
+  font-family: "Silkscreen", cursive;
+}
+.modal .modal-dialog .modal-content {
+  color: var(--white);
+}
 .modal .modal-dialog .modal-content .modal-header {
-  background-color: #5c5c5c;
-  color: #e3e3e3;
+  background-color: var(--white);
+  color: var(--tertiary-color);
+  border-bottom: thick solid black;
 }
 .modal .modal-dialog .modal-content .modal-header .close {
-  background-color: red;
+  background-color: var(--primary-color);
   padding: 0;
   padding-bottom: 8px;
   margin: 0;
@@ -96,12 +127,17 @@ body {
   text-align: center;
 }
 .modal .modal-dialog .modal-content .modal-body {
-  background-color: #e3e3e3;
   text-align: center;
+  margin: auto;
+  width: 100%;
+  background-color: var(--primary-color);
 }
 .modal .modal-dialog .modal-content .modal-body .pokemon-image-container {
+  background-color: var(--tertiary-color);
+  margin: auto;
   border: 5px solid black;
   border-radius: 10px;
+  margin-bottom: 20px;
 }
 .modal .modal-dialog .modal-content .modal-body .pokemon-image-container .pokemon-image-front {
   width: 50%;
@@ -110,14 +146,27 @@ body {
   width: 50%;
 }
 .modal .modal-dialog .modal-content .modal-body .modal-title {
+  width: 100%;
+  max-width: 466px;
+  margin: auto;
   text-align: center;
+  border: thick solid black;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  background-color: var(--tertiary-color);
 }
 .modal .modal-dialog .modal-content .modal-body .types-container {
   width: 100%;
+  max-width: 466px;
+  margin: auto;
   margin-bottom: 20px;
+  border: thick solid black;
+  border-radius: 10px;
+  background-color: var(--tertiary-color);
 }
 .modal .modal-dialog .modal-content .modal-body .types-container .types-header {
   text-decoration: underline;
+  text-align: left;
 }
 .modal .modal-dialog .modal-content .modal-body .types-container .pokemon-types {
   display: flex;
@@ -130,152 +179,127 @@ body {
 }
 .modal .modal-dialog .modal-content .modal-body .physical-container {
   width: 100%;
+  margin: auto;
   margin-bottom: 20px;
+  border: thick solid black;
+  border-radius: 10px;
+  background-color: var(--tertiary-color);
 }
-.modal .modal-dialog .modal-content .modal-body .physical-container .physical-header {
-  text-decoration: underline;
+.modal .modal-dialog .modal-content .modal-body .physical-container .pokemon-h-w {
+  margin: 0;
+  padding: 0;
+}
+.modal .modal-dialog .modal-content .modal-body .physical-container .pokemon-h-w p {
+  margin: 0;
+  padding: 0;
+  font-size: large;
+  font-weight: bold;
 }
 .modal .modal-dialog .modal-content .modal-body .stats-container {
   width: 100%;
+  margin: auto;
+  padding: 0;
   margin-bottom: 20px;
+  border: thick solid black;
+  border-radius: 10px;
+  background-color: var(--tertiary-color);
+  justify-content: center;
+  text-align: center;
+  align-items: center;
 }
 .modal .modal-dialog .modal-content .modal-body .stats-container .stats-header {
   text-decoration: underline;
+  text-align: center;
+}
+.modal .modal-dialog .modal-content .modal-body .stats-container .pokemon-stats {
+  list-style: none;
+  text-align: left;
+  padding: 0;
+  padding-right: 5px;
+  margin: 0;
+}
+.modal .modal-dialog .modal-content .modal-body .stats-container .pokemon-stats > p {
+  padding: 2px;
+  margin: 2px;
+  font-weight: bold;
+}
+.modal .modal-dialog .modal-content .modal-body .stats-container .pokemon-stats .pokemon-stats-bar {
+  border: 2px solid black;
+  border-radius: 25px;
+  margin: 0;
+  margin-bottom: 5px;
+  padding: 0;
+  width: 100%;
 }
 .modal .modal-dialog .modal-content .modal-body .stats-container .pokemon-stats-name {
   list-style: none;
   text-align: left;
-  margin-left: 20px;
-  margin-right: 0;
-  padding-right: 0;
-}
-.modal .modal-dialog .modal-content .modal-body .stats-container .pokemon-stats {
-  list-style: none;
   padding: 0;
   margin: 0;
-  text-align: center;
+  margin-bottom: 5px;
+  padding-left: 5px;
 }
-.modal .modal-dialog .modal-content .modal-body .stats-container .pokemon-stats .meter {
-  height: 20px;
+.modal .modal-dialog .modal-content .modal-body .stats-container .pokemon-stats-name > li {
+  margin-bottom: 2px;
+}
+.modal .modal-dialog .modal-content .modal-body .meter {
+  height: 100%;
   position: relative;
   background: #555;
-  border-radius: 25px;
+  margin: 0;
+  margin-bottom: 1px;
+  padding: 0;
+  padding-right: 5px;
   box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3);
-  text-align: center;
+  border-radius: 25px;
+  overflow: hidden;
 }
-.modal .modal-dialog .modal-content .modal-body .stats-container .pokemon-stats .meter > span {
-  text-align: center;
+.modal .modal-dialog .modal-content .modal-body .meter .stats-progress-bar {
   display: block;
   height: 100%;
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
-  background-color: rgb(42, 194, 83);
-  background-image: linear-gradient(center bottom, rgb(43, 194, 83) 37%, rgb(84, 240, 84) 69%);
+  background-color: var(--senary);
+  background-image: linear-gradient(center bottom, var(--septenary) 37%, var(--quinary) 69%);
   box-shadow: inset 0 2px 9px rgba(255, 255, 255, 0.3), inset 0 -2px 6px rgba(0, 0, 0, 0.4);
   position: relative;
   overflow: hidden;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  color: var(--white);
+  text-align: center;
+  font-weight: bold;
+  text-shadow: 0 2px 5px var(--black, 0.3);
 }
-.modal .modal-dialog .modal-content .modal-body .abilities-container {
+.modal .modal-dialog .abilities-container {
   width: 100%;
+  margin: auto;
   margin-bottom: 20px;
+  border: thick solid black;
 }
-.modal .modal-dialog .modal-content .modal-body .abilities-container .abilites-header {
+.modal .modal-dialog .abilities-container .abilites-header {
   text-decoration: underline;
 }
-.modal .modal-dialog .modal-content .modal-body .abilities-container .pokemon-abilities {
+.modal .modal-dialog .abilities-container .pokemon-abilities {
   display: flex;
   justify-content: center;
   list-style: none;
 }
-.modal .modal-dialog .modal-content .modal-body .abilities-container .pokemon-abilities li {
+.modal .modal-dialog .abilities-container .pokemon-abilities li {
   margin-left: 10px;
   margin-right: 10px;
 }
-.modal .modal-dialog .modal-content .modal-body .moves-container {
+.modal .modal-dialog .moves-container {
   width: 100%;
+  margin: auto;
   margin-bottom: 20px;
+  border: thick solid black;
 }
-.modal .modal-dialog .modal-content .modal-body .moves-container .moves-header {
+.modal .modal-dialog .moves-container .moves-header {
   text-decoration: underline;
 }
-.modal .modal-dialog .modal-content .modal-body .moves-container .pokemon-moves {
+.modal .modal-dialog .moves-container .pokemon-moves {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto;
   justify-content: center;
   list-style: none;
-}
-
-.color-bug {
-  background-color: rgb(209, 224, 77);
-}
-
-.color-dark {
-  background-color: rgb(112, 88, 72);
-}
-
-.color-dragon {
-  background-color: rgb(112, 56, 248);
-}
-
-.color-electic {
-  background-color: rgb(248, 208, 48);
-}
-
-.color-fairy {
-  background-color: rgb(238, 153, 172);
-}
-
-.color-fighting {
-  background-color: rgb(192, 48, 40);
-}
-
-.color-fire {
-  background-color: rgb(240, 128, 48);
-}
-
-.color-flying {
-  background-color: rgb(168, 144, 240);
-}
-
-.color-ghost {
-  background-color: rgb(112, 88, 152);
-}
-
-.color-grass {
-  background-color: rgb(120, 200, 80);
-}
-
-.color-ground {
-  background-color: rgb(224, 192, 104);
-}
-
-.color-ice {
-  background-color: rgb(152, 216, 216);
-}
-
-.color-normal {
-  background-color: rgb(168, 168, 120);
-}
-
-.color-poison {
-  background-color: rgb(160, 64, 160);
-}
-
-.color-psychic {
-  background-color: rgb(248, 88, 136);
-}
-
-.color-rock {
-  background-color: rgb(184, 160, 56);
-}
-
-.color-steel {
-  background-color: rgb(184, 184, 208);
-}
-
-.color-water {
-  background-color: rgb(104, 144, 240);
 }/*# sourceMappingURL=styles.css.map */
