@@ -2,7 +2,7 @@
 
 let pokemonRepository = (function () {
   let pokemonList = [];
-  let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=20";
+  let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=1000";
 
   //Gets pokemon from the pokemon list array
   function getAll() {
@@ -183,13 +183,6 @@ let pokemonRepository = (function () {
     let pokemonMoves = document.querySelector(".pokemon-moves");
     pokemonMoves.innerHTML = itemMoves;
 
-    let itemStatsName = "";
-    pokemon.stats.forEach(function (stats) {
-      itemStatsName += ["<li>" + stats.stat.name.charAt(0).toUpperCase() + stats.stat.name.slice(1) + "</li>"];
-    });
-    let pokemonStatsName = document.querySelector(".pokemon-stats-name");
-    // pokemonStatsName.innerHTML = itemStatsName;
-
     let itemStats = "";
     pokemon.stats.forEach(function (stats) {
       itemStats += ["<li class='meter'>" + "<span class='stats-progress-bar' style='width: " + stats.base_stat  + "%'>" + stats.base_stat + "</span>" + "</li>"];
@@ -242,8 +235,9 @@ pokemonRepository.loadList().then(function () {
 });
 
 // let createPage = function () {
-//   let numberOfPokemonDisplayed = pokemonRepository.getAll();
-//   console.log(numberOfPokemonDisplayed);
+//   let numberOfPokemonDisplayed = pokemonRepository.loadList();
+//   let numberOfPages = numberOfPokemonDisplayed / 25;
+//   console.log(numberOfPages);
 // };
 
 // createPage();

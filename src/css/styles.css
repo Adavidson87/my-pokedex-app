@@ -242,19 +242,19 @@
 .modal .modal-dialog .modal-content .modal-body .stats-container .pokemon-stats-name > li {
   margin-bottom: 2px;
 }
-.modal .modal-dialog .modal-content .modal-body .meter {
+.modal .modal-dialog .modal-content .modal-body .stats-container .meter {
   height: 100%;
   position: relative;
   background: #555;
   margin: 0;
-  margin-bottom: 1px;
+  margin-bottom: 3px;
   padding: 0;
   padding-right: 5px;
   box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3);
   border-radius: 25px;
   overflow: hidden;
 }
-.modal .modal-dialog .modal-content .modal-body .meter .stats-progress-bar {
+.modal .modal-dialog .modal-content .modal-body .stats-container .meter .stats-progress-bar {
   display: block;
   height: 100%;
   background-color: var(--senary);
@@ -269,37 +269,44 @@
   font-weight: bold;
   text-shadow: 0 2px 5px var(--black, 0.3);
 }
-.modal .modal-dialog .abilities-container {
+.modal .modal-dialog .modal-content .modal-body .abilities-container {
   width: 100%;
   margin: auto;
   margin-bottom: 20px;
   border: thick solid black;
+  border-radius: 10px;
+  background-color: var(--tertiary-color);
 }
-.modal .modal-dialog .abilities-container .abilites-header {
+.modal .modal-dialog .modal-content .modal-body .abilities-container .abilities-header {
   text-decoration: underline;
+  text-align: center;
 }
-.modal .modal-dialog .abilities-container .pokemon-abilities {
+.modal .modal-dialog .modal-content .modal-body .abilities-container .pokemon-abilities {
   display: flex;
   justify-content: center;
   list-style: none;
 }
-.modal .modal-dialog .abilities-container .pokemon-abilities li {
+.modal .modal-dialog .modal-content .modal-body .abilities-container .pokemon-abilities li {
   margin-left: 10px;
   margin-right: 10px;
 }
-.modal .modal-dialog .moves-container {
+.modal .modal-dialog .modal-content .modal-body .moves-container {
   width: 100%;
   margin: auto;
   margin-bottom: 20px;
   border: thick solid black;
+  border-radius: 10px;
+  background-color: var(--tertiary-color);
 }
-.modal .modal-dialog .moves-container .moves-header {
+.modal .modal-dialog .modal-content .modal-body .moves-container .moves-header {
   text-decoration: underline;
 }
-.modal .modal-dialog .moves-container .pokemon-moves {
+.modal .modal-dialog .modal-content .modal-body .moves-container .pokemon-moves {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto;
   justify-content: center;
   list-style: none;
+  padding: 0;
+  margin: 0;
 }/*# sourceMappingURL=styles.css.map */
